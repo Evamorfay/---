@@ -74,9 +74,9 @@
 
   
   for (let i = 0; i < STICKER_COUNT; i++) {
-    createFloatingSticker(); // ลอยทันที!
-};
-
+        setTimeout(() => createFloatingSticker(), getRandom(0, 3000));
+      }
+    };
   </script>
 </body>
 </html>
