@@ -43,7 +43,7 @@
       sticker.className = 'sticker';
 
       const startX = getRandom(0, window.innerWidth - 100);
-      const offsetX = getRandom(-80, 80);
+      const offsetX = getRandom(-70, 80);
       const offsetY = getRandom(-500, -900); // ยิ่งลบมาก ยิ่งลอยสูง
       const scale = getRandom(0.9, 1.2);
 
@@ -55,7 +55,7 @@
       // เริ่มลอยขึ้นแบบไม่ชะลอ
       setTimeout(() => {
         sticker.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
-      }, 70);
+      }, 10);
 
       // เริ่มจางหาย
       setTimeout(() => {
