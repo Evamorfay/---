@@ -69,10 +69,10 @@
         }
       }, 10000);
     }
-    setTimeout(() => {
-        audio.play();
-      }, 300);
-    
+  
+    window.onload = () => {
+      audio.play();
+
     
       for (let i = 0; i < STICKER_COUNT; i++) {
         setTimeout(() => createFloatingSticker(), getRandom(0, 3000));
