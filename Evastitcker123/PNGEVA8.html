@@ -75,13 +75,6 @@
 
       for (let i = 0; i < STICKER_COUNT; i++) {
         setTimeout(() => createFloatingSticker(), getRandom(0, 3000));
-        
-        window.addEventListener("DOMContentLoaded", () => {
-  const audio = document.getElementById("liveAudio");
-  audio.muted = false; // ปิด mute
-  audio.play().catch((e) => {
-    console.log("เล่นเสียงไม่สำเร็จ:", e);
-    
       }
     };
   </script>
