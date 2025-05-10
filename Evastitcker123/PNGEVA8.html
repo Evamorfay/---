@@ -71,7 +71,11 @@
     }
 
     window.onload = () => {
+     
+       setTimeout(() => {
       audio.play();
+    }, 5000); // เล่นหลังจากโหลดเสร็จ 5 วิ
+  };
 
       for (let i = 0; i < STICKER_COUNT; i++) {
         setTimeout(() => createFloatingSticker(), getRandom(0, 2500));
