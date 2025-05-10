@@ -43,7 +43,7 @@
       sticker.className = 'sticker';
 
       const startX = getRandom(0, window.innerWidth - 100);
-      const offsetX = getRandom(-880, 80);
+      const offsetX = getRandom(-80, 80);
       const offsetY = getRandom(-500, -900); // ยิ่งลบมาก ยิ่งลอยสูง
       const scale = getRandom(0.9, 1.2);
 
@@ -60,14 +60,14 @@
       // เริ่มจางหาย
       setTimeout(() => {
         sticker.classList.add('fade-out');
-      }, 6500);
+      }, 1000);
 
       // ลบหลังจางหาย
       setTimeout(() => {
         if (getComputedStyle(sticker).opacity === "0") {
           sticker.remove();
         }
-      }, 10000);
+      }, 6000);
     }
 
     window.onload = () => {
