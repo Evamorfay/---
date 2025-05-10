@@ -60,7 +60,7 @@
       // เริ่มจางหาย
       setTimeout(() => {
         sticker.classList.add('fade-out');
-      }, 8000);
+      }, 6500);
 
       // ลบหลังจางหาย
       setTimeout(() => {
@@ -74,7 +74,7 @@
       audio.play();
 
       for (let i = 0; i < STICKER_COUNT; i++) {
-        setTimeout(() => createFloatingSticker(), getRandom(0, 1000));
+        setTimeout(() => createFloatingSticker(), getRandom(0, 2000));
       }
     };
   </script>
