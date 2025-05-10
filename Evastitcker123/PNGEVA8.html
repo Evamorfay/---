@@ -55,7 +55,7 @@
       // เริ่มลอยขึ้นแบบไม่ชะลอ
       setTimeout(() => {
         sticker.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
-      }, 10);
+      }, 70);
 
       // เริ่มจางหาย
       setTimeout(() => {
@@ -74,7 +74,7 @@
       audio.play();
 
       for (let i = 0; i < STICKER_COUNT; i++) {
-        setTimeout(() => createFloatingSticker(), getRandom(0, 3000));
+        setTimeout(() => createFloatingSticker(), getRandom(0, 1000));
       }
     };
   </script>
