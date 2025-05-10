@@ -26,14 +26,18 @@
 </head>
 <body>
   <div id="stickersContainer"></div>
-  <audio id="liveAudio" src="https://evamorfay.github.io/evaworkplace/Evastitcker123/ahggggggggggggggg.mp3" ></audio>
+  <audio id="liveAudio" src="https://evamorfay.github.io/evaworkplace/Evastitcker123/ahggggggggggggggg.mp3" preload="auto"></audio>
 
-  <script> 
-  const audio = document.getElementById('liveAudio');
-  setTimeout(() => {
-  audio.play();
-}, 5000); // เล่นหลังจาก 2.5 วินาที
-  </script>
+  <script>
+  window.onload = () => {
+    const audio = document.getElementById('liveAudio');
+
+    setTimeout(() => {
+      audio.play();
+    }, 5000); // เล่นหลังจากโหลดเสร็จ 5 วิ
+  };
+</script>
+
 
   <script>
     const container = document.getElementById('stickersContainer');
