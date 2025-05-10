@@ -60,14 +60,14 @@
       // เริ่มจางหาย
       setTimeout(() => {
         sticker.classList.add('fade-out');
-      }, 1000);
+      }, 8000);
 
       // ลบหลังจางหาย
       setTimeout(() => {
         if (getComputedStyle(sticker).opacity === "0") {
           sticker.remove();
         }
-      }, 6000);
+      }, 10000);
     }
 
     window.onload = () => {
