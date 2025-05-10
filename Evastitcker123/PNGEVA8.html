@@ -71,13 +71,13 @@
     window.onload = () => {
       // ปล่อยสติกเกอร์ทันที
       for (let i = 0; i < STICKER_COUNT; i++) {
-        setTimeout(() => createFloatingSticker(), getRandom(0, 2500));
+        setTimeout(() => createFloatingSticker(), getRandom(0, 2000));
       }
 
       // เล่นเสียงหลังจาก 300ms
       setTimeout(() => {
         audio.play();
-      }, 1000);
+      }, 1800);
     };
   </script>
 </body>
