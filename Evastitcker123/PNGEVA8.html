@@ -69,17 +69,14 @@
         }
       }, 10000);
     }
-  
-    // ปล่อยสติกเกอร์ก่อน
-    for (let i = 0; i < STICKER_COUNT; i++) {
-      createFloatingSticker();
-    }
 
-    // ดีเลย์เสียงนิดนึง (เช่น 300ms หรือ 500ms ก็ได้)
-    setTimeout(() => {
+    window.onload = () => {
       audio.play();
-    }, 300); // ลองปรับตรงนี้ให้เหมาะกับความรู้สึกเลย Fay~ 
-  });
+
+      for (let i = 0; i < STICKER_COUNT; i++) {
+        setTimeout(() => createFloatingSticker(), getRandom(0, 3000));
+      }
+    };
   </script>
 </body>
 </html>
