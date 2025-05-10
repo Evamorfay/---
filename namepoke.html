@@ -32,17 +32,20 @@ body {
 <img id="pokeImg" src="poke.gif">
 
 <script>
-// ดึงชื่อจาก URL
+// ดึงชื่อจาก URL อย่างปลอดภัย
 function getQueryParam(param) {
   const params = new URLSearchParams(window.location.search);
   return params.get(param);
 }
 
-const userName = getQueryParam('name');
+let userName = getQueryParam('name');
+
 if (userName) {
-  document.getElementById('nameTag').innerText = userName + ' poked you!';
+  // ป้องกันตัวอักษรแปลกๆ
+  userName = decodeURIComponent(userName).replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  document.getElementById('nameTag').textContent = userName + ' poked you!';
 } else {
-  document.getElementById('nameTag').innerText = 'Someone poked you!';
+  document.getElementById('nameTag').textContent = 'Someone poked you!';
 }
 </script>
 
