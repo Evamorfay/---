@@ -9,28 +9,15 @@ body {
   overflow: hidden;
   background: transparent;
 }
-
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
-  
 #nameTag {
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 28px;
-  color: #fff0f5; /* ชมพูอ่อนหวาน /
-  text-shadow: 2px 2px 5px #ff69b4; / เงาชมพูวิ้งค์ /
-  font-family: 'Fredoka', sans-serif;
-  border: 2px solid #ff69b4; / ขอบชมพูอ่อน /
-  padding: 5px 10px;
-  border-radius: 12px;
-  background-color: rgba(255, 182, 193, 0.6); / ชมพูใส */
-}
+  font-size: 24px;
+  color: white;
+  text-shadow: 2px 2px 4px #000;
+  font-family: sans-serif;
 
-#pokeImg {
-  position: absolute;
-  top: 50px;
-  left: 50px;
-  width: 200px;
 }
 </style>
 </head>
@@ -40,20 +27,17 @@ body {
 <img id="pokeImg" src="poke.gif">
 
 <script>
-// ดึงชื่อจาก URL อย่างปลอดภัย
+// ดึงชื่อจาก URL
 function getQueryParam(param) {
   const params = new URLSearchParams(window.location.search);
   return params.get(param);
 }
 
-let userName = getQueryParam('name');
-
+const userName = getQueryParam('name');
 if (userName) {
-  // ป้องกันตัวอักษรแปลกๆ
-  userName = decodeURIComponent(userName).replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  document.getElementById('nameTag').textContent = userName + ' poked you!';
+  document.getElementById('nameTag').innerText = userName + ' poked you!';
 } else {
-  document.getElementById('nameTag').textContent = 'Someone poked you!';
+  document.getElementById('nameTag').innerText = 'Someone poked you!';
 }
 </script>
 
