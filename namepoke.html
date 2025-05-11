@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Eva's Food Gift</title>
+<title>Poke Animation</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
 
@@ -15,62 +15,49 @@ body {
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 48px;
+  font-size: 40px;
   color: white;
-  text-shadow: 2px 2px 6px #000;
+  text-shadow: 2px 2px 4px #000;
   font-family: 'Fredoka', sans-serif;
-  padding: 10px 20px;
-  border-radius: 20px;
 }
 </style>
 </head>
 <body>
 
-<div id="nameTag">กำลังสุ่มอาหาร...</div>
+<div id="nameTag"></div>
 
 <script>
-// ดึงชื่อคนที่กด redeem จาก URL (?name=Fay)
+// ดึงชื่อจาก URL
 function getQueryParam(param) {
   const params = new URLSearchParams(window.location.search);
   return params.get(param);
 }
 
-// รายการอาหารน่ารัก ๆ
-const cuteFoods = [
-  '🍓 เค้กสตรอว์เบอร์รี่ 🍓',
-  '🍜 ราเมงซุปกระดูกหมู 🍜',
-  '🍙 โอนิกิริแซลมอน 🍙',
-  '🍡 ดังโงะสามสี 🍡',
-  '🍛 ข้าวแกงกะหรี่ญี่ปุ่น 🍛',
-  '🍰 ชีสเค้กนุ่มฟู 🍰',
-  '🍧 น้ำแข็งไสรสเมล่อน 🍧',
-  '🧋 ชานมไข่มุก 🧋',
-  '🍩 โดนัทสายรุ้ง 🍩',
-  '🥐 ครัวซองเนยสด 🥐'
+// รายการคำพูดสุ่ม (แก้ comma แล้วจ้า)
+const randomPhrases = [
+  'poked you!',
+  'แอบสะกิดเล่น!',
+  'tickled Eva!',
+  'say hi to Eva',
+  'sneaked a poke!',
+  'เรียกเอวา 123',
+  'มาส่งความรักให้เอวาแล้ว',
+  'ต้องการให้เอวาสนใจตอนนี้เลย',
+  'need your attention!'
 ];
 
-// สุ่มอาหาร
-function getRandomFood() {
-  return cuteFoods[Math.floor(Math.random() * cuteFoods.length)];
+// ฟังก์ชันสุ่มคำพูด
+function getRandomPhrase() {
+  const index = Math.floor(Math.random() * randomPhrases.length);
+  return randomPhrases[index];
 }
 
-// ฟอร์มข้อความน่ารัก
-function getCuteMessage(name, food) {
-  const patterns = [
-    `${name} ทาน ${food} แล้วน้า~`,
-    `Eva เสิร์ฟ ${food} ให้ ${name} แล้วค่า!`,
-    `Eva สุ่ม ${food} ให้ ${name} เรียบร้อยแล้ว~`,
-    `${name} ได้รับ ${food} จาก Eva!`,
-    `ขอให้ ${name} อร่อยกับ ${food} นะคะ~`
-  ];
-  return patterns[Math.floor(Math.random() * patterns.length)];
+const userName = getQueryParam('name');
+if (userName) {
+  document.getElementById('nameTag').innerText = userName + ' ' + getRandomPhrase();
+} else {
+  document.getElementById('nameTag').innerText = 'Someone ' + getRandomPhrase();
 }
-
-// ดำเนินการ
-const userName = getQueryParam('name') || 'ใครบางคน';
-const food = getRandomFood();
-const message = getCuteMessage(userName, food);
-document.getElementById('nameTag').innerText = message;
 </script>
 
 </body>
