@@ -185,18 +185,27 @@ const foodList = [
   'หมูยอห่อใบตอง'
 ];
 
+  // ฟังก์ชันสุ่มอาหาร
+function getRandomFood() {
+  const index = Math.floor(Math.random() * foodList.length);
+  return foodList[index];
+}
+
+// ตอนโหลดเว็บ ให้ขึ้นข้อความกำลังสุ่มก่อน
+document.getElementById('nameTag').innerText = 'กำลังสุ่มเมนูให้อยู่นะคะ...';
+
+// ผ่านไป 2 วินาที ค่อยโชว์เมนูที่สุ่มได้
+setTimeout(function() {
+  const food = getRandomFood();
+  document.getElementById('nameTag').innerText = 'Eva แนะนำให้ทาน ' + food;
+}, 2000);
+
 // ฟังก์ชันสุ่มอาหาร
 function getRandomFood() {
   const index = Math.floor(Math.random() foodList.length);
   return foodList[index];
 }
 
-// ดึงชื่อผู้ใช้
-const userName = getQueryParam('name') || 'ใครบางคน';
-
-// ใส่ข้อความสวยๆ ลงจอ
-document.getElementById('nameTag').innerText =
-  'Eva แนะนำให้ ' + userName + ' ทาน ' + getRandomFood();
 </script>
 
 </body>
