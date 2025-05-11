@@ -1,35 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Eva's Food Gift</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
+  <meta charset="UTF-8" />
+  <title>Eva's Food Surprise!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
 
-body {
-  margin: 0;
-  overflow: hidden;
-  background: transparent;
-}
-#nameTag {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 48px;
-  color: white;
-  text-shadow: 2px 2px 6px #000;
-  font-family: 'Fredoka', sans-serif;
-  padding: 10px 20px;
-  border-radius: 20px;
-}
-</style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    #container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    #nameTag {
+      font-size: 48px;
+      color: white;
+      text-shadow: 2px 2px 8px #000;
+      font-family: 'Fredoka', sans-serif;
+      padding: 20px 30px;
+      border-radius: 25px;
+      animation: popUp 0.8s ease;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    @keyframes popUp {
+      0% {
+        transform: scale(0.2);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div id="nameTag">กำลังสุ่มอาหาร...</div>
+<div id="container">
+  <div id="nameTag">กำลังสุ่มเมนูให้อยู่นะคะ...</div>
+</div>
+
+<!-- เสียงเอฟเฟกต์น่ารักเบา ๆ -->
+<audio id="sfx" src="https://cdn.pixabay.com/audio/2022/03/15/audio_53cc88c2c5.mp3"></audio>
 
 <script>
-// ดึงชื่อคนที่กด redeem จาก URL (?name=Fay)
+// ฟังก์ชันดึงชื่อคนจาก URL
 function getQueryParam(param) {
   const params = new URLSearchParams(window.location.search);
   return params.get(param);
@@ -203,28 +231,39 @@ const cuteFoods = [
   'หมูยอห่อใบตอง'
 ];
 
-// สุ่มอาหาร
-function getRandomFood() {
-  return cuteFoods[Math.floor(Math.random() * cuteFoods.length)];
-}
-
-// ฟอร์มข้อความน่ารัก
+// ข้อความแบบน่ารักหลายสไตล์
 function getCuteMessage(name, food) {
   const patterns = [
-    `Eva จะป้อน ${food} ให้ ${name} นะคะ อ้าม~`,
-    `Eva มาเสิร์ฟ ${food} ให้ ${name} แล้วค่า!`,
-    `Eva สุ่ม ${food} ให้ ${name} น้า~ ทานมั้ยคะเตง`,
+    `${name} ทาน ${food} แล้วน้า~`,
+    `Eva เสิร์ฟ ${food} ให้ ${name} แล้วค่า!`,
+    `Eva สุ่ม ${food} ให้ ${name} เรียบร้อยแล้ว~`,
     `${name} ได้รับ ${food} จาก Eva!`,
     `ขอให้ ${name} อร่อยกับ ${food} นะคะ~`
   ];
   return patterns[Math.floor(Math.random() * patterns.length)];
 }
 
-// ดำเนินการ
+// ดึงชื่อจาก URL
 const userName = getQueryParam('name') || 'ใครบางคน';
-const food = getRandomFood();
-const message = getCuteMessage(userName, food);
-document.getElementById('nameTag').innerText = message;
+
+// สุ่มเมนูใหม่ (เสมอ!)
+const usedIndex = Math.floor(Math.random() * cuteFoods.length);
+const food = cuteFoods[usedIndex];
+
+// สร้างข้อความ
+const finalMessage = getCuteMessage(userName, food);
+
+// ใส่ข้อความ & เด้งแอนิเมชัน
+const tag = document.getElementById('nameTag');
+tag.innerText = finalMessage;
+tag.style.animation = 'none';
+void tag.offsetWidth; // รีเฟรชแอนิเมชัน
+tag.style.animation = 'popUp 0.8s ease';
+
+// เล่นเสียง
+document.getElementById('sfx').play().catch(() => {
+  console.warn('Sound autoplay blocked by browser.');
+});
 </script>
 
 </body>
