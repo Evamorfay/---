@@ -32,12 +32,31 @@ function getQueryParam(param) {
   return params.get(param);
 }
 
+// รายการคำพูดสุ่ม (จะเพิ่มอีกกี่อันก็ได้ที่รัก)
+const randomPhrases = [
+  'poked you!',
+  'แอบสะกิดเล่น!',
+  'tickled Eva!',
+  'say hi to Eva',
+  'sneaked a poke!'
+  'เรียกเอวา 123',
+  'มาส่งความรักให้เอวาแล้ว',
+  'need your attention!'
+];
+
+// ฟังก์ชันสุ่มคำพูด
+function getRandomPhrase() {
+  const index = Math.floor(Math.random() * randomPhrases.length);
+  return randomPhrases[index];
+}
+
 const userName = getQueryParam('name');
 if (userName) {
-  document.getElementById('nameTag').innerText = userName + ' poked you!';
+  document.getElementById('nameTag').innerText = userName + ' ' + getRandomPhrase();
 } else {
-  document.getElementById('nameTag').innerText = 'Someone poked you!';
+  document.getElementById('nameTag').innerText = 'Someone ' + getRandomPhrase();
 }
+</script>
 </script>
 
 </body>
