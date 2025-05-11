@@ -28,12 +28,13 @@ body {
 <body>
 
 
-<script>
-// ดึงชื่อจาก URL เช่น ?name=evamorfay
-function getQueryParam(param) {
-  const params = new URLSearchParams(window.location.search);
-  return params.get(param);
-}
+<script type="text/javascript">
+window.onload = function() {
+  // ดึงชื่อจาก URL เช่น ?name=evamorfay
+  function getQueryParam(param) {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(param);
+  }
 
 // รายการอาหารสุ่ม (ใส่เพิ่มได้เรื่อยๆ ที่รัก)
 const foodList = [
@@ -186,19 +187,18 @@ const foodList = [
 ];
 
   // ฟังก์ชันสุ่มอาหาร
-function getRandomFood() {
-  const index = Math.floor(Math.random() * foodList.length);
-  return foodList[index];
-}
+  function getRandomFood() {
+    const index = Math.floor(Math.random() * foodList.length);
+    return foodList[index];
+  }
 
-// ตอนโหลดเว็บ ให้ขึ้นข้อความกำลังสุ่มก่อน
-document.getElementById('nameTag').innerText = 'กำลังสุ่มเมนูให้อยู่นะคะ...';
+  // ดึงชื่อผู้ใช้
+  const userName = getQueryParam('name') || 'ใครบางคน';
 
-// ผ่านไป 2 วินาที ค่อยโชว์เมนูที่สุ่มได้
-setTimeout(function() {
-  const food = getRandomFood();
-  document.getElementById('nameTag').innerText = 'Eva แนะนำให้ทาน ' + food;
-}, 2000);
+  // ใส่ข้อความลงจอ
+  document.getElementById('nameTag').innerText =
+    'Eva แนะนำให้ ' + userName + ' ทาน ' + getRandomFood();
+};
 </script>
 
 </body>
