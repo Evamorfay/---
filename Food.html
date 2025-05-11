@@ -32,6 +32,14 @@ body {
 
 <script type="text/javascript">
 window.onload = function() {
+  // ดึงชื่อจาก URL เช่น ?name=evamorfay
+  function getQueryParam(param) {
+    const params = new URLSearchParams(window.location.search);
+    return params.get(param);
+} 
+  
+<script type="text/javascript">
+window.onload = function() {
   // รายการอาหารสุ่ม (ยาว ๆ ของที่รัก)
   const foodList = [
   'ผัดกะเพรา',
