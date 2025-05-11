@@ -4,22 +4,21 @@
 <meta charset="UTF-8">
 <title>Poke Animation</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
 
 body {
   margin: 0;
   overflow: hidden;
   background: transparent;
 }
-
 #nameTag {
   position: absolute;
   top: 10px;
   left: 10px;
   font-size: 40px;
   color: white;
-  text-shadow: 2px 2px 6px #000;
-  font-family: 'Fredoka One', cursive; /* ฟ้อนต์น่ารัก /
+  text-shadow: 2px 2px 4px #000;
+  font-family: 'Fredoka', sans-serif;
 }
 </style>
 </head>
@@ -34,29 +33,24 @@ function getQueryParam(param) {
   return params.get(param);
 }
 
-// รายการคำพูดสุ่ม (แก้คอมม่าถูกแล้ว)
+// รายการคำพูดสุ่ม (แก้ comma แล้วจ้า)
 const randomPhrases = [
   'poked you!',
   'แอบสะกิดเล่น!',
   'tickled Eva!',
-  'say hi to Eva!',
+  'say hi to Eva',
   'sneaked a poke!',
-  'เรียกเอวา 123!',
-  'มาส่งความรักให้เอวาแล้ว!',
-  'need your attention!',
-  'ฝากหัวใจมาให้แล้ว!',
-  'คิดถึงนะ!',
-  'boop boop!',
-  'ส่งยิ้มให้แล้วนะ!'
+  'เรียกเอวา 123',
+  'มาส่งความรักให้เอวาแล้ว',
+  'need your attention!'
 ];
 
 // ฟังก์ชันสุ่มคำพูด
 function getRandomPhrase() {
-  const index = Math.floor(Math.random() randomPhrases.length);
+  const index = Math.floor(Math.random() * randomPhrases.length);
   return randomPhrases[index];
 }
 
-// ดึงชื่อแล้วแสดงผล
 const userName = getQueryParam('name');
 if (userName) {
   document.getElementById('nameTag').innerText = userName + ' ' + getRandomPhrase();
