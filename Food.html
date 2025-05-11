@@ -14,6 +14,7 @@ body {
   align-items: center;
   height: 100vh;
 }
+
 #nameTag {
   font-size: 32px;
   color: #333;
@@ -27,17 +28,19 @@ body {
 </head>
 <body>
 
+<div id="nameTag">Eva Food Gacha จะบอกอาหารให้ที่รักเดี๋ยวนี้จ้า~</div>
+
+  <script>
+// ดึงชื่อจาก URL เช่น ?name=evamorfay
+function getQueryParam(param) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(param);
+}
 
 <script type="text/javascript">
 window.onload = function() {
-  // ดึงชื่อจาก URL เช่น ?name=evamorfay
-  function getQueryParam(param) {
-    const params = new URLSearchParams(window.location.search);
-    return params.get(param);
-  }
-
-// รายการอาหารสุ่ม (ใส่เพิ่มได้เรื่อยๆ ที่รัก)
-const foodList = [
+  // รายการอาหารสุ่ม (ยาว ๆ ของที่รัก)
+  const foodList = [
   'ผัดกะเพรา',
   'ผัดพริกแกง',
   'ผัดคะน้า / ผัดคะน้าปลาเค็ม / ผัดแขนงหมูกรอบ / ผัดแขนงหมูกรอบ / ผัดผักบุ้ง / ผัดผักบุ้งหมูกรอบ',
@@ -184,21 +187,19 @@ const foodList = [
   'ไข่ป่าม',
   'แหนมปิ้ง',
   'หมูยอห่อใบตอง'
-];
+    // ... ยาวต่อไปเท่าที่ที่รักอยากใส่
+  ];
 
   // ฟังก์ชันสุ่มอาหาร
-  function getRandomFood() {
-    const index = Math.floor(Math.random() * foodList.length);
-    return foodList[index];
+  function randomFood() {
+    const randomIndex = Math.floor(Math.random() foodList.length);
+    const randomFood = foodList[randomIndex];
+    document.getElementById('nameTag').innerText = randomFood;
   }
 
-  // ดึงชื่อผู้ใช้
-  const userName = getQueryParam('name') || 'ใครบางคน';
-
-  // ใส่ข้อความลงจอ
-  document.getElementById('nameTag').innerText =
-    'Eva แนะนำให้ ' + userName + ' ทาน ' + getRandomFood();
-};
+  // สั่งสุ่มทันทีที่โหลดหน้า
+  randomFood();
+}
 </script>
 
 </body>
