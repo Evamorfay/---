@@ -49,7 +49,9 @@ function getRandomPhrase() {
 
 const userName = getQueryParam('name');
 if (userName) {
-  document.getElementById('nameTag').innerText = getRandomPhrase() + ', ' + userName;
+  document.getElementById('nameTag').innerText = userName + ' ' + getRandomPhrase();
+} else {
+  document.getElementById('nameTag').innerText = 'Someone ' + getRandomPhrase();
 }
 </script>
 
