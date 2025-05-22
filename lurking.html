@@ -36,8 +36,8 @@ function getQueryParam(param) {
 // รายการคำพูดสุ่ม 
 const randomPhrases = [
   'appreciate you sneaking in and hanging out',
-  'you're the best silent buddy ever',
-  'you're the best silent buddy ever',
+  'you are the best silent buddy ever',
+  'you are the best silent buddy ever',
   'I truly appreciate your quiet presence'
 ];
 
@@ -49,9 +49,9 @@ function getRandomPhrase() {
 
 const userName = getQueryParam('name');
 if (userName) {
-  document.getElementById('nameTag').innerText = userName + ' ' + getRandomPhrase();
+  document.getElementById('nameTag').innerText = getRandomPhrase() + ', ' + userName;
 } else {
-  document.getElementById('nameTag').innerText = 'Someone ' + getRandomPhrase();
+  document.getElementById('nameTag').innerText = getRandomPhrase() + ', someone special';
 }
 </script>
 
