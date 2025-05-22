@@ -50,8 +50,6 @@ function getRandomPhrase() {
 const userName = getQueryParam('name');
 if (userName) {
   document.getElementById('nameTag').innerText = getRandomPhrase() + ', ' + userName;
-} else {
-  document.getElementById('nameTag').innerText = getRandomPhrase() + ', someone special';
 }
 </script>
 
